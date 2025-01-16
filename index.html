@@ -10,42 +10,120 @@
   />
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f8f9fa;
-    }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+}
 
-    .swiper {
-      width: 100%;
-      max-width: 800px;
-      margin: 20px auto;
-    }
+.swiper {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
 
-    .swiper-slide {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #fff;
-      background-color: #007bff;
-      border-radius: 8px;
-    }
+/* Hover effect on slides */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  opacity: 0.9; /* Slight transparency for subtle effect */
+}
 
-    .swiper-pagination-bullet {
-      background: #000 !important;
-      opacity: 0.6;
-    }
+.swiper-slide:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+  opacity: 1; /* Full opacity on hover */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Slight shadow */
+}
 
-    .swiper-pagination-bullet-active {
-      opacity: 1;
-    }
+/* Smooth pagination bullets */
+.swiper-pagination-bullet {
+  background: #000 !important;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
 
-    .swiper-button-prev,
-    .swiper-button-next {
-      color: #000;
-    }
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #007bff !important; /* Active bullet color */
+}
+
+/* Buttons Styling */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  padding: 10px;
+  transition: background 0.3s ease;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: rgba(0, 0, 0, 0.6); /* Darker background on hover */
+}
+
+/* Scrollbar Styling */
+.swiper-scrollbar {
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.swiper-scrollbar-drag {
+  background-color: #007bff;
+  border-radius: 5px;
+}
+
+.swiper-scrollbar:hover .swiper-scrollbar-drag {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Slide transition animation */
+.swiper-container-animate .swiper-slide {
+  animation: slideIn 1s ease-out;
+}
+
+/* Keyframe animation for slide-in effect */
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .swiper-slide {
+    font-size: 1.2rem;
+  }
+
+  .swiper {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .swiper-slide {
+    font-size: 1rem;
+  }
+}
   </style>
 </head>
 <body>
