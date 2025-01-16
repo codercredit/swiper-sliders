@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Swiper Sliders</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper/swiper-bundle.min.css"
+  />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    }
+
+    .swiper {
+      width: 100%;
+      max-width: 800px;
+      margin: 20px auto;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+      background-color: #007bff;
+      border-radius: 8px;
+    }
+
+    .swiper-pagination-bullet {
+      background: #000 !important;
+      opacity: 0.6;
+    }
+
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Swiper 1 -->
+<div
+  class="swiper slider-one"
+  data-swiper-prefix="slider-one"
+  data-swiper-speed="1000"
+  data-swiper-loop="true"
+  data-swiper-slides-per-view="1"
+  data-swiper-space-between="20"
+  data-swiper-autoplay-delay="4000"
+  data-swiper-effect="slide"
+  data-swiper-navigation="true"
+  data-swiper-pagination="true"
+  data-swiper-scrollbar="true"
+  data-swiper-keyboard="true"
+  data-swiper-mousewheel="true"
+  data-swiper-breakpoints='{
+    "640": {"slidesPerView": 1, "spaceBetween": 10},
+    "768": {"slidesPerView": 2, "spaceBetween": 15},
+    "1024": {"slidesPerView": 3, "spaceBetween": 20}
+  }'
+>
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">Slide 1A</div>
+    <div class="swiper-slide">Slide 2A</div>
+    <div class="swiper-slide">Slide 3A</div>
+  </div>
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-scrollbar"></div>
+</div>
+
+<!-- Swiper 2 -->
+<div
+  class="swiper slider-two"
+  data-swiper-prefix="slider-two"
+  data-swiper-speed="500"
+  data-swiper-loop="false"
+  data-swiper-slides-per-view="1"
+  data-swiper-space-between="10"
+  data-swiper-autoplay-delay="3000"
+  data-swiper-effect="fade"
+  data-swiper-navigation="true"
+  data-swiper-pagination="true"
+  data-swiper-breakpoints='{
+    "640": {"slidesPerView": 1, "spaceBetween": 10},
+    "768": {"slidesPerView": 2, "spaceBetween": 20}
+  }'
+>
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">Slide 1B</div>
+    <div class="swiper-slide">Slide 2B</div>
+    <div class="swiper-slide">Slide 3B</div>
+  </div>
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  // Initialize Swiper sliders dynamically
+  document.querySelectorAll('.swiper').forEach((swiperEl) => {
+    const prefix = swiperEl.dataset.swiperPrefix || 'swiper';
+    const config = {
+      speed: parseInt(swiperEl.dataset.swiperSpeed) || 300,
+      loop: swiperEl.dataset.swiperLoop === "true",
+      slidesPerView: parseInt(swiperEl.dataset.swiperSlidesPerView) || 1,
+      spaceBetween: parseInt(swiperEl.dataset.swiperSpaceBetween) || 0,
+      autoplay: swiperEl.dataset.swiperAutoplayDelay
+        ? {
+            delay: parseInt(swiperEl.dataset.swiperAutoplayDelay),
+            disableOnInteraction: false,
+          }
+        : false,
+      effect: swiperEl.dataset.swiperEffect || 'slide',
+      navigation: swiperEl.dataset.swiperNavigation === "true"
+        ? {
+            nextEl: `.${prefix} .swiper-button-next`,
+            prevEl: `.${prefix} .swiper-button-prev`,
+          }
+        : false,
+      pagination: swiperEl.dataset.swiperPagination === "true"
+        ? {
+            el: `.${prefix} .swiper-pagination`,
+            clickable: true,
+          }
+        : false,
+      scrollbar: swiperEl.dataset.swiperScrollbar === "true"
+        ? {
+            el: `.${prefix} .swiper-scrollbar`,
+            draggable: true,
+          }
+        : false,
+      keyboard: swiperEl.dataset.swiperKeyboard === "true",
+      mousewheel: swiperEl.dataset.swiperMousewheel === "true",
+      breakpoints: swiperEl.dataset.swiperBreakpoints
+        ? JSON.parse(swiperEl.dataset.swiperBreakpoints)
+        : {},
+      grabCursor: true,
+    };
+    new Swiper(swiperEl, config);
+  });
+</script>
+
+</body>
+</html>
